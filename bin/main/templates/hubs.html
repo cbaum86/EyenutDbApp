@@ -9,10 +9,11 @@
 </head>
 
 <body>
+	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
 	<h2>All Hubs...</h2>
 	<div th:each="hub : ${hubs}">
-		<p th:text="${hub.hubName}"</p>
+		<p th:text="${hub.hubName + ' : ' + hub.hubIp + ' : ' + hub.AWS}"</p>
 	</div>
 	
 	<h2>AWS Hubs...</h2>
@@ -27,8 +28,12 @@
 	
 	<h2>Query...</h2>
 	<div th:each="query : ${queries}">
-		<p th:text="${query.queryName}"</p>
+		<p th:text="${query.queryName + ' : ' + query.queryContent}"</p>
 	</div>
+	
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out"/>
+	</form>
     
 </body>
 </html>
