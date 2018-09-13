@@ -1,0 +1,47 @@
+body {
+	margin: 0;
+	font-family: Arial;
+	font-size: 100%;
+}
+
+#login {
+	height: 100vh;
+	display: grid;
+	justify-items: center;
+	align-items: center;
+}
+#loginWrapper {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 400px;
+	padding: 0 5vw;
+}
+#loginWrapper * {
+	box-sizing: border-box;
+}
+#loginWrapper input {
+	width: 100%;
+	padding: 1rem 2rem;
+	border: 1px solid #BBB;
+	border-radius: 2px;
+}
+#loginWrapper input + input {
+	margin-top: 16px;
+}
+#loginWrapper input[type="submit"] {
+	cursor: pointer;
+	margin-top: 32px;
+	background-color: #EEE;
+	font-weight: bold;
+	transition: background-color 0.5s ease;
+}
+#loginWrapper input[type="submit"]:hover {
+	background-color: #CCC;
+}
+
+#selectHub {
+	
+}
+#selectHub true {
+	background-color: green;
+}

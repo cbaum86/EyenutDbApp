@@ -4,8 +4,7 @@
     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <head lang="en" th:include="fragments/header :: header">
 </head>
 
 <body>
@@ -13,8 +12,12 @@
 
 	<h2>All Hubs...</h2>
 	<div th:each="hub : ${hubs}">
-		<p th:text="${hub.hubName + ' : ' + hub.hubIp + ' : ' + hub.AWS}"</p>
+		<p th:text="${hub.hubName + ' : ' + hub.hubIp + ' : ' + hub.AWS + ' : ' + hub.selected}"</p>
 	</div>
+	
+		<div th:each="hub : ${hubs}">
+			<button type="button" th:value="${hub.id}" th:text="${hub.hubName}" class="selectHub" th:classappend="${hub.selected}"></button>
+		</div>
 	
 	<h2>AWS Hubs...</h2>
 	<div th:each="awsHub : ${awsHubs}">
@@ -34,6 +37,47 @@
 	<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Sign Out"/>
 	</form>
+	
+	<script>
+	$("button").click(function fire_ajax() {
+		
+		var hubId = $(this).val();
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
+
+	    $.ajax({
+	        type: "POST",
+	        contentType: "application/json",
+	        url: "/hubSelectedState",
+	        data: JSON.stringify(hubId),
+	        dataType: 'json',
+	        cache: false,
+	        timeout: 600000,
+	        success: function (data) {
+
+	            /* var json = "<h4>Ajax Response</h4><pre>"
+	                + JSON.stringify(data, null, 4) + "</pre>";
+	            $('#feedback').html(json);
+
+	            console.log("SUCCESS : ", data);
+	            $("#btn-search").prop("disabled", false); */
+
+	        },
+	        error: function (e) {
+
+	            /* var json = "<h4>Ajax Response</h4><pre>"
+	                + e.responseText + "</pre>";
+	            $('#feedback').html(json);
+
+	            console.log("ERROR : ", e);
+	            $("#btn-search").prop("disabled", false); */
+
+	        }
+	    });
+
+	});
+	
+	</script>
     
 </body>
 </html>

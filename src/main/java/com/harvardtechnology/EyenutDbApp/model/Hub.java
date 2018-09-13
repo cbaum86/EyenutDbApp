@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Hub {
@@ -17,6 +18,9 @@ public class Hub {
 	private String hubIp;
 	
 	private boolean isAWS;
+	
+	@Transient
+	private boolean selected;
 
 	/**
 	 * @return the id
@@ -72,6 +76,14 @@ public class Hub {
 	 */
 	public void setAWS(boolean isAWS) {
 		this.isAWS = isAWS;
+	}
+
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 
 

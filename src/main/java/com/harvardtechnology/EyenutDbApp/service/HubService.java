@@ -34,6 +34,10 @@ public class HubService {
 		return Lists.newArrayList(repository.findAll());
 	}
 	
+	public Hub findById(int id) {
+		return repository.findById(id).get();
+	}
+	
 	public List<Hub> listByIsAWS(boolean isAWS) {
 		return Lists.newArrayList(repository.findAllByIsAWS(isAWS));
 	}
