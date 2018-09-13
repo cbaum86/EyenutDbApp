@@ -19,6 +19,7 @@ public class HubController {
 		
 		model.addAttribute("hubs", hubService.listAll());
 		model.addAttribute("awsHubs", hubService.listByIsAWS(true));
+		model.addAttribute("nonAwsHubs", hubService.listByIsAWS(false));
 		
 		model.addAttribute("queries", queryService.listAll());
 		
