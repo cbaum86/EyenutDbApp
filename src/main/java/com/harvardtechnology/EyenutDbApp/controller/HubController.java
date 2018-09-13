@@ -2,22 +2,28 @@ package com.harvardtechnology.EyenutDbApp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.harvardtechnology.EyenutDbApp.model.Hub;
-import com.harvardtechnology.EyenutDbApp.repository.HubRepository;
+import com.harvardtechnology.EyenutDbApp.service.HubService;
+import com.harvardtechnology.EyenutDbApp.service.QueryService;
 
 @Controller
-@RequestMapping(path="/hubs")
 public class HubController {
 	
-	@Autowired private HubRepository hubRepo;
+	@Autowired HubService hubService;
+	@Autowired QueryService queryService;
 	
-	@GetMapping("/listall")
-	public @ResponseBody Iterable<Hub> getAllHubs() {
-		return hubRepo.findAll();
+	@RequestMapping("/hubs")
+	public String hubList(Model model) {
+		
+		model.addAttribute("hubs", hubService.listAll());
+		model.addAttribute("awsHubs", hubService.listByIsAWS(true));
+		
+		model.addAttribute("queries", queryService.listAll());
+		
+		return "/hubs";
+		
 	}
 
 }
