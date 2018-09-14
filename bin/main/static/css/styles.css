@@ -40,8 +40,31 @@ body {
 }
 
 .selectHub {
-	
+	cursor: pointer;
+	display: inline-block;
+	float: left;
+	padding: 1rem 2rem;
+	border: 1px solid #BBB;
+	border-radius: 2px;
+	background-color: #EEE;
+	font-weight: bold;
+	transition: background-color 0.5s ease;
 }
-.selectHub.true {
-	background-color: green;
+.selectHub + .selectHub {
+	margin-left: 32px;
+}
+.selectHub:hover {
+	background-color: #BED136;
+}
+.selectHub:active {
+	background-color: blue;
+}
+.selectHub.selected {
+	background-color: #BED136;
+}
+.selectHub.selected:hover {
+	background-color: #EEE;
+}
+.selectHub.selected:active {
+	background-color: red;
 }

@@ -13,9 +13,8 @@
 	<h2>All Hubs...</h2>
 	
 	<form th:action="@{/results}" method="post">
-		<div th:each="hub : ${hubs}">
-			<button type="button" th:id="${hub.hubName + hub.id}" th:value="${hub.hubName}" th:text="${hub.hubName}" class="selectHub"></button>
-		</div>
+		<button type="button" th:each="hub : ${hubs}" th:id="${hub.hubName}" th:value="${hub.hubName}" th:text="${hub.hubName}" class="selectHub"></button>
+		
 		<input type="hidden" id="hubList" name=hubList value="" />
 		
 		<input type="submit" name="action" value="Run" />
@@ -33,11 +32,9 @@
 		var hubName = $(this).val();
 		selected.push(hubName);
 		
-		console.log(selected);
+		document.getElementById($(this).val()).classList.toggle('selected');
 		
 		$("#hubList").val(selected);
-		
-		console.log($("#hubList").val(selected));
 
 	});
 	
