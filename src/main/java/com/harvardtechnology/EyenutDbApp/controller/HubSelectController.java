@@ -37,13 +37,14 @@ public class HubSelectController {
 	public ResponseEntity<?> updateHubSelected(@Valid @RequestBody Integer hubId, Errors errors) {
 				
 		Hub myHub = hubService.findById(hubId);
-		System.out.println(myHub.getHubName() + " : " + myHub.isSelected());
+		System.out.println("Old Value: " + myHub.getHubName() + " : " + myHub.isSelected());
 		
 		Boolean selectState = myHub.isSelected() ? false : true;
-		System.out.println(selectState);
 		
 		myHub.setSelected(selectState);
-		System.out.println(myHub.getHubName() + " : " + myHub.isSelected());
+		System.out.println("New Value: " + myHub.getHubName() + " : " + myHub.isSelected());
+		
+		hubService.updateHub(myHub);
 		
 		return ResponseEntity.ok(myHub);
 	}

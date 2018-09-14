@@ -41,5 +41,9 @@ public class HubService {
 	public List<Hub> listByIsAWS(boolean isAWS) {
 		return Lists.newArrayList(repository.findAllByIsAWS(isAWS));
 	}
+	
+	public Hub updateHub(Hub hub) {
+		return repository.save(hub);
+	}
 
 }

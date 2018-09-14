@@ -39,9 +39,9 @@ body {
 	background-color: #CCC;
 }
 
-#selectHub {
+.selectHub {
 	
 }
-#selectHub true {
+.selectHub.true {
 	background-color: green;
 }

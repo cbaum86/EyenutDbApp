@@ -16,7 +16,7 @@
 	</div>
 	
 		<div th:each="hub : ${hubs}">
-			<button type="button" th:value="${hub.id}" th:text="${hub.hubName}" class="selectHub" th:classappend="${hub.selected}"></button>
+			<button type="button" th:id="${hub.hubName + hub.id}" th:value="${hub.id}" th:text="${hub.hubName}" class="selectHub" th:classappend="${hub.selected}"></button>
 		</div>
 	
 	<h2>AWS Hubs...</h2>
@@ -42,8 +42,6 @@
 	$("button").click(function fire_ajax() {
 		
 		var hubId = $(this).val();
-		var token = $("meta[name='_csrf']").attr("content");
-		var header = $("meta[name='_csrf_header']").attr("content");
 
 	    $.ajax({
 	        type: "POST",
@@ -54,6 +52,14 @@
 	        cache: false,
 	        timeout: 600000,
 	        success: function (data) {
+	        	
+	        	var response = data
+	        	console.log(data);
+	        	
+	        	var button = document.getElementById(data.hubName + data.id);
+	        	console.log(button);
+	        	
+	        	button.className = "selectHub " + data.selected;
 
 	            /* var json = "<h4>Ajax Response</h4><pre>"
 	                + JSON.stringify(data, null, 4) + "</pre>";
