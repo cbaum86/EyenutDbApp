@@ -11,75 +11,33 @@
 	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
 	<h2>All Hubs...</h2>
-	<div th:each="hub : ${hubs}">
-		<p th:text="${hub.hubName + ' : ' + hub.hubIp + ' : ' + hub.AWS + ' : ' + hub.selected}"</p>
-	</div>
 	
+	<form th:action="@{/results}" method="post">
 		<div th:each="hub : ${hubs}">
-			<button type="button" th:id="${hub.hubName + hub.id}" th:value="${hub.id}" th:text="${hub.hubName}" class="selectHub" th:classappend="${hub.selected}"></button>
+			<button type="button" th:id="${hub.hubName + hub.id}" th:value="${hub.hubName}" th:text="${hub.hubName}" class="selectHub"></button>
 		</div>
-	
-	<h2>AWS Hubs...</h2>
-	<div th:each="awsHub : ${awsHubs}">
-		<p th:text="${awsHub.hubName}"</p>
-	</div>
-	
-	<h2>Non-AWS Hubs...</h2>
-	<div th:each="nonAwsHub : ${nonAwsHubs}">
-		<p th:text="${nonAwsHub.hubName}"</p>
-	</div>
-	
-	<h2>Query...</h2>
-	<div th:each="query : ${queries}">
-		<p th:text="${query.queryName + ' : ' + query.queryContent}"</p>
-	</div>
+		<input type="hidden" id="hubList" name=hubList value="" />
+		
+		<input type="submit" name="action" value="Run" />
+	</form>
 	
 	<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Sign Out"/>
 	</form>
 	
 	<script>
-	$("button").click(function fire_ajax() {
+	var selected = [];
+	
+	$("button.selectHub").click(function() {
 		
-		var hubId = $(this).val();
-
-	    $.ajax({
-	        type: "POST",
-	        contentType: "application/json",
-	        url: "/hubSelectedState",
-	        data: JSON.stringify(hubId),
-	        dataType: 'json',
-	        cache: false,
-	        timeout: 600000,
-	        success: function (data) {
-	        	
-	        	var response = data
-	        	console.log(data);
-	        	
-	        	var button = document.getElementById(data.hubName + data.id);
-	        	console.log(button);
-	        	
-	        	button.className = "selectHub " + data.selected;
-
-	            /* var json = "<h4>Ajax Response</h4><pre>"
-	                + JSON.stringify(data, null, 4) + "</pre>";
-	            $('#feedback').html(json);
-
-	            console.log("SUCCESS : ", data);
-	            $("#btn-search").prop("disabled", false); */
-
-	        },
-	        error: function (e) {
-
-	            /* var json = "<h4>Ajax Response</h4><pre>"
-	                + e.responseText + "</pre>";
-	            $('#feedback').html(json);
-
-	            console.log("ERROR : ", e);
-	            $("#btn-search").prop("disabled", false); */
-
-	        }
-	    });
+		var hubName = $(this).val();
+		selected.push(hubName);
+		
+		console.log(selected);
+		
+		$("#hubList").val(selected);
+		
+		console.log($("#hubList").val(selected));
 
 	});
 	
