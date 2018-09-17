@@ -39,6 +39,64 @@ body {
 	background-color: #CCC;
 }
 
+
+
+header {
+	background-color: #333;
+}
+#header {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	grid-template-areas: "logo nav logout";
+	justify-items: center;
+	align-items: center;
+	height: auto;
+	width: 960px;
+	margin: 0 auto;
+}
+
+#logo {
+	grid-area: logo;
+}
+#logo img {
+	height: 5vh;
+	padding: 16px 0;
+}
+#nav {
+	grid-area: nav;
+	align-self: stretch;
+	
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: auto;
+	justify-items: center;
+	align-items: center;
+}
+#nav a {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0 32px;
+	text-decoration: none;
+	color: white;
+	transition: color 0.5s ease;
+}
+#nav a:hover {
+	color: #BED136;
+}
+#logout {
+	grid-area: logout;
+	
+	padding: 1rem 2rem;
+	border: 1px solid #BBB;
+	border-radius: 2px;
+	background-color: #EEE;
+	font-weight: bold;
+}
+
+
+
+
 .selectHub {
 	cursor: pointer;
 	display: inline-block;
@@ -57,14 +115,14 @@ body {
 	background-color: #BED136;
 }
 .selectHub:active {
-	background-color: blue;
+	background-color: #93a327;
 }
 .selectHub.selected {
 	background-color: #BED136;
 }
-.selectHub.selected:hover {
+/* .selectHub.selected:hover {
 	background-color: #EEE;
-}
+} */
 .selectHub.selected:active {
-	background-color: red;
+	background-color: #CCC;
 }

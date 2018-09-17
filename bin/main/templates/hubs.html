@@ -8,12 +8,17 @@
 </head>
 
 <body>
+
+	<div lang="en" th:replace="fragments/nav :: nav"></div>
+
 	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
 	<h2>All Hubs...</h2>
 	
 	<form th:action="@{/results}" method="post">
-		<button type="button" th:each="hub : ${hubs}" th:id="${hub.hubName}" th:value="${hub.hubName}" th:text="${hub.hubName}" class="selectHub"></button>
+		<section id="awsHubs">
+			<button type="button" th:each="hub : ${hubs}" th:id="${hub.hubName}" th:value="${hub.hubName}" th:text="${hub.hubName}" class="selectHub"></button>
+		</section>
 		
 		<input type="hidden" id="hubList" name=hubList value="" />
 		
@@ -23,6 +28,8 @@
 	<form th:action="@{/logout}" method="post">
 		<input type="submit" value="Sign Out"/>
 	</form>
+	
+	<div lang="en" th:include="fragments/footer :: footer"></div>
 	
 	<script>
 	var selected = [];
