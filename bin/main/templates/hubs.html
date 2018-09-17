@@ -4,48 +4,49 @@
     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     
 <head>
-    <head lang="en" th:include="fragments/header :: header">
+    <head lang="en" th:insert="fragments/headMeta :: headMeta">
 </head>
 
 <body>
 
 	<div lang="en" th:replace="fragments/nav :: nav"></div>
-
-	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-
-	<h2>All Hubs...</h2>
 	
 	<form th:action="@{/results}" method="post">
-		<section id="awsHubs">
-			<button type="button" th:each="hub : ${hubs}" th:id="${hub.hubName}" th:value="${hub.hubName}" th:text="${hub.hubName}" class="selectHub"></button>
-		</section>
+	
+		<div id="hubsWrapper">
+			<div id="awsHubs" class="hubsContainer">
+				<h2 class="divider">AWS Hub Selection</h2>
+				<div class="hubsItem">
+					<button type="button" th:each="hub : ${hubs}" th:id="${hub.hubName}" th:value="${hub.hubName}" th:text="${hub.hubName}" class="selectHub"></button>
+				</div>
+				<button id="selectAllAws" class="selectAll">Select All AWS</button>
+			</div>
+			
+			<div id="starHubs" class="hubsContainer">
+				<h2 class="divider">STAR Hub Selection</h2>
+				<div class="hubsItem">
+					<button type="button" th:each="hub : ${hubs}" th:id="${hub.hubName}" th:value="${hub.hubName}" th:text="${hub.hubName}" class="selectHub"></button>
+				</div>
+				<button id="selectAllStar" class="selectAll">Select All Star</button>
+			</div>
+		</div>
+		
+		<div id="queryWrapper">
+			<h2 class="divider">Query Editor</h2>
+			<textarea id="queryInput" placeholder="Input SQL Query Here..."></textarea>
+			<input type="submit" name="action" value="Run Query" id="runQuery" class="queryBttn left" />
+			<input type="submit" name="action" value="Run Procedure" id="runProc" class="queryBttn left" />
+			<input type="submit" name="action" value="Load Query" id="saveQuery" class="queryBttn right" />
+			<input type="submit" name="action" value="Save Query" id="loadQuery" class="queryBttn right" />
+		</div>
 		
 		<input type="hidden" id="hubList" name=hubList value="" />
 		
-		<input type="submit" name="action" value="Run" />
 	</form>
 	
-	<form th:action="@{/logout}" method="post">
-		<input type="submit" value="Sign Out"/>
-	</form>
-	
-	<div lang="en" th:include="fragments/footer :: footer"></div>
-	
-	<script>
-	var selected = [];
-	
-	$("button.selectHub").click(function() {
-		
-		var hubName = $(this).val();
-		selected.push(hubName);
-		
-		document.getElementById($(this).val()).classList.toggle('selected');
-		
-		$("#hubList").val(selected);
+	<div th:replace="fragments/footer :: footer"></div>
 
-	});
-	
-	</script>
+	<script type="text/javascript" th:src="@{/js/script.js}"></script>
     
 </body>
 </html>

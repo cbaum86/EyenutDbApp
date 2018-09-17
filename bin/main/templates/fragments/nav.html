@@ -8,6 +8,10 @@
 			<a href="#">Hubs</a>
 			<a href="#">Queries</a>
 		</nav>
-		<button id="logout">Logout</button>
+		<form th:action="@{/logout}" method="post" id="logout">
+			<input type="submit" id="logoutBttn" value="Sign Out"/>
+		</form>
 	</div>
 </header>
+
+<div id="main"> /* Closing Tag in Footer Fragment */
