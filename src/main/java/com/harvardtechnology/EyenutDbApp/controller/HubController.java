@@ -1,7 +1,6 @@
 package com.harvardtechnology.EyenutDbApp.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,30 +23,31 @@ public class HubController {
 	@RequestMapping("/hubs")
 	public String hubList(Model model) {
 		
-		model.addAttribute("awsHubs", hubService.listAll());
-		model.addAttribute("starHubs", hubService.listAll());
+		model.addAttribute("awsHubs", hubService.listByIsAWS(true));
+		model.addAttribute("starHubs", hubService.listByIsAWS(false));
 		
 		return "/hubs";
 		
 	}
 	
-	@RequestMapping(value = "/results", method=RequestMethod.POST, params="action=Run")
+	@RequestMapping(value = "/results", method=RequestMethod.POST, params="action=RunQuery")
 	public String runSQL(final Model model, @RequestParam(value="hubList",required=false,defaultValue="hello") String hubList ) {
-		System.out.println(hubList);
 		
 		String[] hubIds = hubList.split(",");
+		List<Hub> selectedAwsHubs = new ArrayList<Hub>();
+		List<Hub> selectedStarHubs = new ArrayList<Hub>();
 		
-		List<Hub> allHubs = new ArrayList<Hub>();
-		List<Hub> selectedHubs = new ArrayList<Hub>();
-		allHubs = hubService.listByIsAWS(true);
-		
-		for(Hub hub : allHubs) {
-			if(Arrays.asList(hubIds).contains(hub.getHubName())) {
-				selectedHubs.add(hub);
+		for(String hubStr : hubIds) {
+			Hub hub = hubService.findByName(hubStr);
+			if (hub.isAWS()) {
+				selectedAwsHubs.add(hub);
+			} else if (!hub.isAWS()) {
+				selectedStarHubs.add(hub);
 			}
 		}
 		
-		System.out.println(selectedHubs);
+		System.out.println(selectedAwsHubs);
+		System.out.println(selectedStarHubs);
 								
 		return "/hubs";
 	}

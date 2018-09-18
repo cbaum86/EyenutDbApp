@@ -38,6 +38,10 @@ public class HubService {
 		return repository.findById(id).get();
 	}
 	
+	public Hub findByName(String name) {
+		return repository.findByHubName(name).get();
+	}
+	
 	public List<Hub> listByIsAWS(boolean isAWS) {
 		return Lists.newArrayList(repository.findAllByIsAWS(isAWS));
 	}

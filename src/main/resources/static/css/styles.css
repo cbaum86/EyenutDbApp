@@ -16,11 +16,14 @@ h1 {
 	
 }
 h2 {
-	margin: 0 0 32px 0;
+	margin: 0;
 }
 .divider {
 	padding-bottom: 16px;
 	border-bottom: 1px solid #DDD;
+}
+.sectionBackground {
+	background-color: #EEE;
 }
 
 button,
@@ -37,12 +40,8 @@ button:hover,
 input[type="submit"]:hover {
 	background-color: #BED136;
 }
-
-.left {
-	float: left;
-}
-.right {
-	float: right;
+button i {
+	margin-right: 8px;
 }
 
 
@@ -169,12 +168,11 @@ footer {
 }
 .hubsContainer {
 	padding: 32px;
-	background-color: #EEE;
 	border-radius: 3px;
 }
 .hubsItem {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
 	grid-column-gap: 1vw;
 	grid-row-gap: 1vw;
 }
@@ -184,18 +182,23 @@ footer {
 #starHubs {
 	
 }
-button.selectAll,
-input[type="submit"].queryBttn {
-	display: block;
-	width: 300px;
-	margin: 32px auto 0 auto;
-	background-color: transparent;
+.containerHeader {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-row-gap: 1vw;
+	align-items: center;
+	margin-bottom: 32px;
+}
+button.selectAll {
+	justify-self: end;
+	width: auto;
+	background-color: #FFF;
 	border: 2px solid #BED136;
+	font-size: 1rem;
 	color: #BED136;
 	transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
 }
-button.selectAll:hover,
-input[type="submit"].queryBttn:hover {
+button.selectAll:hover {
 	background-color: #BED136;
 	border-color: #BED136;
 	color: #FFF;
@@ -221,16 +224,15 @@ input[type="submit"].queryBttn:hover {
 	background-color: #CCC;
 }
 
+
 /*
- * QUERY STYLES
+ * QUERY STYLES (ADDITIONAL TO HUB STYLES)
  */
 #queryWrapper {
-	overflow: hidden;
 	box-sizing: border-box;
 	width: 90%;
 	margin: 32px 5%;
 	padding: 32px;
-	background-color: #EEE;
 	border-radius: 3px;
 }
 #queryInput {
@@ -243,12 +245,32 @@ input[type="submit"].queryBttn:hover {
 	font-family: Courier New, monospace;
 	color: #555;
 }
-input[type="submit"].queryBttn {
+.queryToolbar {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	grid-column-gap: 16px;
+	grid-row-gap: 16px;
+	margin-top: 32px;
+}
+.toolbarLeft {
+	text-align: left;
+}
+.toolbarRight {
+	text-align: right;
+}
+button.queryBttn {
 	width: auto;
+	background-color: #FFF;
+	border: 2px solid #BED136;
+	font-size: 1rem;
+	color: #BED136;
+	transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
 }
-.queryBttn.left + .queryBttn.left {
+button.queryBttn:hover {
+	background-color: #BED136;
+	border-color: #BED136;
+	color: #FFF;
+}
+.queryBttn + .queryBttn {
 	margin-left: 16px;
-}
-.queryBttn.right + .queryBttn.right {
-	margin-right: 16px;
 }
