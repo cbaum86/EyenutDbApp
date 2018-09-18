@@ -24,7 +24,8 @@ public class HubController {
 	@RequestMapping("/hubs")
 	public String hubList(Model model) {
 		
-		model.addAttribute("hubs", hubService.listAll());
+		model.addAttribute("awsHubs", hubService.listAll());
+		model.addAttribute("starHubs", hubService.listAll());
 		
 		return "/hubs";
 		

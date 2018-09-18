@@ -49,9 +49,8 @@ input[type="submit"]:hover {
 /*
  * LOGIN PAGE STYLES
  */
-#login {
-	height: 100vh;
-	display: grid;
+body#login {
+	grid-template-rows: 1fr;
 	justify-items: center;
 	align-items: center;
 }
