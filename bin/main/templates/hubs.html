@@ -14,40 +14,42 @@
 	<form th:action="@{/results}" method="post">
 	
 		<div id="hubsWrapper">
-			<div id="awsHubs" class="hubsContainer sectionBackground">
-				<div class="containerHeader divider">
+			<div id="awsHubs" class="sectionContainer">
+				<div class="selectHubHeader sectionHeader">
 					<h2>AWS Hub Selection</h2>
-					<button type="button" id="selectAllAws" class="selectAll" onclick="toggleAws(this)"><i class="fas fa-check-double"></i>Select All</button>
+					<button type="button" id="selectAllAws" class="feature selectAllHubs" onclick="toggleAws(this)"><i class="fas fa-check"></i>Select All</button>
 				</div>
-				<div class="hubsItem">
+				<div class="selectHubItems sectionContent">
 					<button type="button" th:each="hub : ${awsHubs}" th:id="${hub.hubName}" th:value="${hub.hubName}" th:text="${hub.hubName}" name="selectAwsHub" class="selectHub" onclick="toggleHub(this)"></button>
 				</div>
 			</div>
 			
-			<div id="starHubs" class="hubsContainer sectionBackground">
-				<div class="containerHeader divider">
+			<div id="starHubs" class="sectionContainer">
+				<div class="selectHubHeader sectionHeader">
 					<h2>STAR Hub Selection</h2>
-					<button type="button" id="selectAllStar" class="selectAll" onclick="toggleStar(this)"><i class="fas fa-check-double"></i>Select All</button>
+					<button type="button" id="selectAllStar" class="feature selectAllHubs" onclick="toggleStar(this)"><i class="fas fa-check"></i>Select All</button>
 				</div>
-				<div class="hubsItem">
+				<div class="selectHubItems sectionContent">
 					<button type="button" th:each="hub : ${starHubs}" th:id="${hub.hubName}" th:value="${hub.hubName}" th:text="${hub.hubName}" name="selectStarHub" class="selectHub" onclick="toggleHub(this)"></button>
 				</div>
 			</div>
 		</div>
 		
-		<div id="queryWrapper" class="sectionBackground">
-			<div class="containerHeader divider">
+		<div id="queryWrapper" class="sectionContainer">
+			<div class="queryEditHeader sectionHeader">
 				<h2>Query Editor</h2>
 			</div>
-			<textarea id="queryInput" placeholder="Input SQL Query Here..."></textarea>
-			<div class="queryToolbar">
-				<div class="toolbarLeft">
-					<button type="submit" name="action" value="RunQuery" id="runQuery" class="queryBttn"><i class="fas fa-database"></i>Run Query</button>
-					<button type="submit" name="action" value="RunProcedure" id="runProc" class="queryBttn"><i class="fas fa-database"></i>Run Procedure</button>
-				</div>
-				<div class="toolbarRight">
-					<button type="submit" name="action" value="LoadQuery" id="saveQuery" class="queryBttn"><i class="fas fa-upload"></i>Load Query</button>
-					<button type="submit" name="action" value="SaveQuery" id="loadQuery" class="queryBttn"><i class="far fa-save"></i>Save Query</button>
+			<div class="queryEditContent sectionContent">
+				<textarea id="queryInput" placeholder="Input SQL Query Here..."></textarea>
+				<div class="queryToolbar">
+					<div class="toolbarLeft">
+						<button type="submit" name="action" value="RunQuery" id="runQuery" class="feature"><i class="fas fa-database"></i>Run Query</button>
+						<button type="submit" name="action" value="RunProcedure" id="runProc" class="feature"><i class="fas fa-database"></i>Run Procedure</button>
+					</div>
+					<div class="toolbarRight">
+						<button type="submit" name="action" value="LoadQuery" id="saveQuery" class="feature"><i class="fas fa-upload"></i>Load Query</button>
+						<button type="submit" name="action" value="SaveQuery" id="loadQuery" class="feature"><i class="far fa-save"></i>Save Query</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -57,8 +59,6 @@
 	</form>
 	
 	<div th:replace="fragments/footer :: footer"></div>
-
-	<script type="text/javascript" th:src="@{/js/script.js}"></script>
     
 </body>
 </html>

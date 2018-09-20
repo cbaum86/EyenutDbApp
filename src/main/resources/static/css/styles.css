@@ -7,6 +7,7 @@ body {
 	
 	min-height: 100vh;
 	margin: 0;
+	background: linear-gradient(220deg, #FFF, #F2F2F2 50%, #FFF 50%);
 	font-family: 'Varela Round', sans-serif;
 	font-size: 100%;
 	color: #555;
@@ -18,68 +19,61 @@ h1 {
 h2 {
 	margin: 0;
 }
-.divider {
-	padding-bottom: 16px;
-	border-bottom: 1px solid #DDD;
+
+.sectionContainer {
+	overflow: hidden;
+	border-radius: 3px;
+	background-color: rgba(210,210,210, 0.6);
 }
-.sectionBackground {
-	background-color: #EEE;
+.sectionHeader {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-row-gap: 1vw;
+	align-items: center;
+	min-height: 48px;
+	padding: 16px 32px;
+	background-color: rgba(210,210,210, 0.6);
+}
+.sectionContent {
+	padding: 16px 32px;
 }
 
 button,
 input[type="submit"] {
 	cursor: pointer;
-	padding: 1rem 2rem;
+	padding: 16px 32px;
 	border: none;
 	border-radius: 3px;
 	font-weight: bold;
 	color: #555;
-	transition: background-color 0.5s ease;
+	transition: all 0.5s ease;
 }
 button:hover,
 input[type="submit"]:hover {
 	background-color: #BED136;
 }
+button:focus {
+	outline:0;
+}
+
+button.feature {
+	width: auto;
+	background-color: #FFF;
+	border: 2px solid #BED136;
+	font-size: 1rem;
+	color: #BED136;
+}
+button.feature.selected,
+button.feature:hover {
+	background-color: #BED136;
+	border-color: #BED136;
+	color: #FFF;
+}
+button.feature + button.feature {
+	margin-left: 16px;
+}
 button i {
 	margin-right: 8px;
-}
-
-
-/*
- * LOGIN PAGE STYLES
- */
-body#login {
-	grid-template-rows: 1fr;
-	justify-items: center;
-	align-items: center;
-}
-#loginWrapper {
-	box-sizing: border-box;
-	width: 100%;
-	max-width: 400px;
-	padding: 0 5vw;
-}
-#loginWrapper * {
-	box-sizing: border-box;
-}
-#loginWrapper input {
-	width: 100%;
-	padding: 1rem 2rem;
-	border: 1px solid #BBB;
-	border-radius: 2px;
-}
-#loginWrapper input + input {
-	margin-top: 16px;
-}
-#loginWrapper input[type="submit"] {
-	cursor: pointer;
-	margin-top: 32px;
-	background-color: #EEE;
-	font-weight: bold;
-	transition: background-color 0.5s ease;
-}
-#loginWrapper input[type="submit"]:hover {
-	background-color: #CCC;
 }
 
 
@@ -160,69 +154,39 @@ footer {
  */
 #hubsWrapper {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(470px, 1fr)); 
+	/* grid-template-columns: 100%; */
 	grid-column-gap: 5vw;
 	grid-row-gap: 2vw;
-	
 	margin: 32px 5%;
 }
-.hubsContainer {
-	padding: 32px;
-	border-radius: 3px;
+button.selectAllHubs {
+	justify-self: end;
 }
-.hubsItem {
+.selectHubItems {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
 	grid-column-gap: 1vw;
 	grid-row-gap: 1vw;
+	padding: 32px;
 }
-#awsHubs {
-	
-}
-#starHubs {
-	
-}
-.containerHeader {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	grid-row-gap: 1vw;
-	align-items: center;
-	margin-bottom: 32px;
-}
-button.selectAll {
-	justify-self: end;
-	width: auto;
-	background-color: #FFF;
-	border: 2px solid #BED136;
-	font-size: 1rem;
-	color: #BED136;
-	transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
-}
-button.selectAll.selected,
-button.selectAll:hover {
-	background-color: #BED136;
-	border-color: #BED136;
-	color: #FFF;
-}
-
 .selectHub {
+	padding: 16px;
 	border: 1px solid #DDD;
 	background-color: #FFF;
 }
 .selectHub:hover {
-	background-color: #BED136;
+	background-color: #FFF;
+	border-color: #BED136;
 }
 .selectHub:active {
-	background-color: #93a327;
+	background-color: #727D20;
 }
 .selectHub.selected {
 	background-color: #BED136;
 }
-/* .selectHub.selected:hover {
-	background-color: #EEE;
-} */
 .selectHub.selected:active {
-	background-color: #CCC;
+	background-color: #AAA;
 }
 
 
@@ -233,8 +197,6 @@ button.selectAll:hover {
 	box-sizing: border-box;
 	width: 90%;
 	margin: 32px 5%;
-	padding: 32px;
-	border-radius: 3px;
 }
 #queryInput {
 	box-sizing: border-box;
@@ -252,27 +214,11 @@ button.selectAll:hover {
 	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	grid-column-gap: 16px;
 	grid-row-gap: 16px;
-	margin-top: 32px;
+	margin-top: 16px;
 }
 .toolbarLeft {
 	text-align: left;
 }
 .toolbarRight {
 	text-align: right;
-}
-button.queryBttn {
-	width: auto;
-	background-color: #FFF;
-	border: 2px solid #BED136;
-	font-size: 1rem;
-	color: #BED136;
-	transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
-}
-button.queryBttn:hover {
-	background-color: #BED136;
-	border-color: #BED136;
-	color: #FFF;
-}
-.queryBttn + .queryBttn {
-	margin-left: 16px;
 }

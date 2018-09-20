@@ -6,9 +6,19 @@
     <title th:text="${title}"></title>
     <link rel="icon" type="image/x-icon" th:href="@{img/favicon.png}" />
     
+    <!-- General Includes -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+    
+    <!-- Conditional Includes -->
+    <th:block th:if="${#httpServletRequest.requestURI == '/login' or #httpServletRequest.requestURI == '/'}">
+    	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+    </th:block>
+    
+    <th:block th:if="${#httpServletRequest.requestURI == '/hubs'}">
+    	<script type="text/javascript" th:src="@{/js/script.js}"></script>
+    </th:block>
 </head>

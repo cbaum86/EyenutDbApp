@@ -10,25 +10,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-        	.csrf().disable()
-        	.authorizeRequests()
-                .antMatchers("/", "/css/**").permitAll()
-                .anyRequest().authenticated()
-                .and()
-            .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/hubs")
-                .permitAll()
-                .and()
-            .logout()
-                .permitAll();
-    }
+	
 
     @Bean
     @Override
@@ -41,6 +27,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .build();
 
         return new InMemoryUserDetailsManager(user);
+    }
+	
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+        	.csrf().disable()
+        	.authorizeRequests()
+                .antMatchers("/", "/css/**", "/img/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/hubs")
+                .permitAll()
+                .and()
+            .logout()
+                .permitAll();
     }
 
 }

@@ -30,6 +30,11 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.springframework.boot:spring-boot-starter-security")
 	
+	compile("org.assertj:assertj-core:3.11.1")
+	
+	compile("org.apache.poi:poi:4.0.0")
+	compile("org.apache.poi:poi-ooxml:4.0.0")
+	
 	runtime('org.springframework.boot:spring-boot-devtools')
 
 	runtime('mysql:mysql-connector-java')

@@ -2,6 +2,7 @@ package com.harvardtechnology.EyenutDbApp.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,6 +51,31 @@ public class HubController {
 		System.out.println(selectedStarHubs);
 								
 		return "/hubs";
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void getColumnValues(Map<String, Object> results) {
+		//For each Hub in a results
+		for(Map.Entry<String, Object> hubResults : results.entrySet()) {
+			
+			//Cast the Map Object Value to List<List<Map<String, Object>>>
+			List<List<Map<String,Object>>> queryValues = (List<List<Map<String, Object>>>) hubResults.getValue();
+			
+			for(List<Map<String, Object>> queryValue : queryValues) {
+			  
+				for(Map<String, Object> columnValues : queryValue) {
+					
+					List<String> columnHeaders = new ArrayList<String>(columnValues.keySet());
+					System.out.println(columnHeaders);
+					
+					for(Map.Entry<String, Object> columnValue : columnValues.entrySet()) {
+						
+						System.out.println(columnValue.getKey() + " : " + columnValue.getValue());
+						
+					}
+				}
+			}
+		}
 	}
 
 }
