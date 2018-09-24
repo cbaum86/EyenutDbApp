@@ -13,10 +13,12 @@
 	
 	<form th:action="@{/results}" method="post">
 	
-		<div id="hubsWrapper">
+		<h1 id="hubSelectTitle">Select Hubs</h1>
+	
+		<div id="hubsWrapper" class="contentWrapper">
 			<div id="awsHubs" class="sectionContainer">
-				<div class="selectHubHeader sectionHeader">
-					<h2>AWS Hub Selection</h2>
+				<div class="sectionHeader">
+					<h2>AWS</h2>
 					<button type="button" id="selectAllAws" class="feature selectAllHubs" onclick="toggleAws(this)"><i class="fas fa-check"></i>Select All</button>
 				</div>
 				<div class="selectHubItems sectionContent">
@@ -25,8 +27,8 @@
 			</div>
 			
 			<div id="starHubs" class="sectionContainer">
-				<div class="selectHubHeader sectionHeader">
-					<h2>STAR Hub Selection</h2>
+				<div class="sectionHeader">
+					<h2>STAR</h2>
 					<button type="button" id="selectAllStar" class="feature selectAllHubs" onclick="toggleStar(this)"><i class="fas fa-check"></i>Select All</button>
 				</div>
 				<div class="selectHubItems sectionContent">
@@ -34,6 +36,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<h1 id="queryTitle">Run SQL</h1>
 		
 		<div id="queryWrapper" class="sectionContainer">
 			<div class="queryEditHeader sectionHeader">
@@ -58,7 +62,66 @@
 		
 	</form>
 	
+	<button data-target="modalOne" class="modalBttn">Modal One</button>
+	<button data-target="modalTwo" class="modalBttn">Modal Two</button>
+	
 	<div th:replace="fragments/footer :: footer"></div>
+	
+	
+	<div id="modalOne" class="modal">
+		<div class="modalContainer">
+			<div class="modalHeader">
+				<span class="modalClose" data-target="modalOne"><i class='fas fa-times'></i></span>
+				<h3>Modal Title</h3>
+			</div>
+			<div class="modalBody">
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+			</div>
+			<div class="modalFooter">
+				<button class="modalClose" data-target="modalOne">Close</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="modalTwo" class="modal">
+		<div class="modalContainer">
+			<div class="modalHeader">
+				<span class="modalClose" data-target="modalTwo"><i class='fas fa-times'></i></span>
+				<h3>Modal Title</h3>
+			</div>
+			<div class="modalBody">
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+				<p>Hello!</p>
+			</div>
+			<div class="modalFooter">
+				<button class="modalClose" data-target="modalTwo">Close</button>
+			</div>
+		</div>
+	</div>
     
 </body>
 </html>

@@ -7,23 +7,26 @@ body {
 	
 	min-height: 100vh;
 	margin: 0;
-	background: linear-gradient(220deg, #FFF, #F2F2F2 50%, #FFF 50%);
+	background: linear-gradient(220deg, #FFF, #FCFCFC 50%, #FFF 50%);
 	font-family: 'Varela Round', sans-serif;
 	font-size: 100%;
 	color: #555;
 }
 
-h1 {
-	
-}
-h2 {
+h1, h2, h3 {
 	margin: 0;
 }
+h1 {
+	font-size: 3rem;
+}
 
+#main {
+	padding: 32px 5vw;
+}
 .sectionContainer {
 	overflow: hidden;
 	border-radius: 3px;
-	background-color: rgba(210,210,210, 0.6);
+	background-color: rgba(230,230,230, 0.8);
 }
 .sectionHeader {
 	display: grid;
@@ -32,7 +35,7 @@ h2 {
 	align-items: center;
 	min-height: 48px;
 	padding: 16px 32px;
-	background-color: rgba(210,210,210, 0.6);
+	background-color: rgba(220,220,220, 0.6);
 }
 .sectionContent {
 	padding: 16px 32px;
@@ -82,7 +85,7 @@ button i {
  */
 header {
 	background-color: #333;
-	border-bottom: 6px solid #BED136;
+	/* border-bottom: 6px solid #BED136; */
 }
 #header {
 	display: grid;
@@ -152,13 +155,31 @@ footer {
 /*
  * HUB PAGE STYLES
  */
+#hubSelectTitle {
+	display: inline-block;
+	position: relative;
+	width: auto;
+	margin-bottom: 16px;
+	color: #FFF;
+}
+#hubSelectTitle::before {
+	z-index: -1;
+	content: '';
+	position: absolute;
+	top: -32px;
+	left: -5vw;
+	height: 350%;
+	width: 250%;
+	background-color: #BED136;
+	clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+}
 #hubsWrapper {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(470px, 1fr)); 
 	/* grid-template-columns: 100%; */
 	grid-column-gap: 5vw;
 	grid-row-gap: 2vw;
-	margin: 32px 5%;
+	margin-bottom: 64px;
 }
 button.selectAllHubs {
 	justify-self: end;
@@ -193,10 +214,28 @@ button.selectAllHubs {
 /*
  * QUERY STYLES (ADDITIONAL TO HUB STYLES)
  */
+#queryTitle {
+	display: inline-block;
+	position: relative;
+	width: auto;
+	margin-bottom: 16px;
+	float: right;
+	color: #FFF;
+}
+#queryTitle::before {
+	z-index: -1;
+	content: '';
+	position: absolute;
+	top: -150%;
+	right: -5vw;
+	height: 500%;
+	width: 250%;
+	background-color: #BED136;
+	clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
+}
 #queryWrapper {
 	box-sizing: border-box;
-	width: 90%;
-	margin: 32px 5%;
+	width: 100%;
 }
 #queryInput {
 	box-sizing: border-box;
@@ -221,4 +260,66 @@ button.selectAllHubs {
 }
 .toolbarRight {
 	text-align: right;
+}
+
+/*
+ * Modals
+ */
+body #main, body nav, body footer {
+	transition: filter 0.1s 0.8s ease;
+}
+body.modalOpen #main, body.modalOpen nav, body.modalOpen footer {
+	filter: blur(2px);
+	transition: filter 1s ease;
+}
+.modal {
+	position: fixed;
+	opacity: 0;
+	box-sizing: border-box;
+	top: 0;
+	left: 0;
+	height: 0;
+	width: 100%;
+	padding: 32px 0;
+	background-color: rgba(0,0,0,0.7);
+	overflow-y: scroll;
+	
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	
+	transition: height 0s 1s ease, opacity 1s ease;
+}
+.modal.open {
+	opacity: 1;
+	height: 100vh;
+	transition: height 0s ease, opacity 1s ease;
+}
+.modalContainer {
+	overflow: hidden;
+	background-color: #FFF;
+	width: 600px;
+	max-width: 80%;
+	border-radius: 3px;
+}
+.modalHeader, .modalFooter, .modalBody {
+	padding: 16px 32px;
+}
+.modalHeader {
+	background-color: #EEE;
+}
+.modalHeader .modalClose {
+	float: right;
+	cursor: pointer;
+	color: #999;
+	transition: color 0.5s ease;
+}
+.modalHeader .modalClose:hover {
+	color: #555;	
+}
+.modalBody {
+	
+}
+.modalFooter {
+	
 }

@@ -18,13 +18,13 @@ function toggleAll(serverType, source) {
 			button.classList.remove("selected");
 			manageSelection(button);
 		}
-		source.innerHTML = "<i class='fas fa-check-double'></i>Select All";
+		source.innerHTML = "<i class='fas fa-check'></i>Select All";
 	} else {
 		for (button of buttons) {
 			button.classList.add("selected");
 			manageSelection(button);
 		}
-		source.innerHTML = "<i class='fas fa-times'></i></i>Deselect All";
+		source.innerHTML = "<i class='fas fa-times'></i>Deselect All";
 	}
 	
 	source.classList.toggle("selected");
