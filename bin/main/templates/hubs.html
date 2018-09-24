@@ -51,8 +51,8 @@
 						<button type="submit" name="action" value="RunProcedure" id="runProc" class="feature"><i class="fas fa-database"></i>Run Procedure</button>
 					</div>
 					<div class="toolbarRight">
-						<button type="submit" name="action" value="LoadQuery" id="saveQuery" class="feature"><i class="fas fa-upload"></i>Load Query</button>
-						<button type="submit" name="action" value="SaveQuery" id="loadQuery" class="feature"><i class="far fa-save"></i>Save Query</button>
+						<button type="button" id="saveQuery" class="feature modalBttn" data-target="modalOne"><i class="fas fa-upload"></i>Load Query</button>
+						<button type="button" id="loadQuery" class="feature modalBttn" data-target="modalTwo"><i class="far fa-save"></i>Save Query</button>
 					</div>
 				</div>
 			</div>
@@ -61,9 +61,6 @@
 		<input type="hidden" id="hubList" name=hubList value="" />
 		
 	</form>
-	
-	<button data-target="modalOne" class="modalBttn">Modal One</button>
-	<button data-target="modalTwo" class="modalBttn">Modal Two</button>
 	
 	<div th:replace="fragments/footer :: footer"></div>
 	
@@ -75,13 +72,6 @@
 				<h3>Modal Title</h3>
 			</div>
 			<div class="modalBody">
-				<p>Hello!</p>
-				<p>Hello!</p>
-				<p>Hello!</p>
-				<p>Hello!</p>
-				<p>Hello!</p>
-				<p>Hello!</p>
-				<p>Hello!</p>
 				<p>Hello!</p>
 				<p>Hello!</p>
 				<p>Hello!</p>

@@ -296,7 +296,6 @@ body.modalOpen #main, body.modalOpen nav, body.modalOpen footer {
 	transition: height 0s ease, opacity 1s ease;
 }
 .modalContainer {
-	overflow: hidden;
 	background-color: #FFF;
 	width: 600px;
 	max-width: 80%;
@@ -306,6 +305,7 @@ body.modalOpen #main, body.modalOpen nav, body.modalOpen footer {
 	padding: 16px 32px;
 }
 .modalHeader {
+	border-radius: 3px 3px 0 0;
 	background-color: #EEE;
 }
 .modalHeader .modalClose {
