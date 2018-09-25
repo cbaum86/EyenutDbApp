@@ -5,9 +5,9 @@ window.addEventListener("load", function(){
 	for(let i = 0; i < modalOpenBttns.length; i++) {
 		modalOpenBttns[i].addEventListener("click", function() {
 			var target = this.dataset.target;
-			document.getElementById(target).classList.add("open");
 			document.getElementsByTagName("body")[0].style.overflow = "hidden";
 			document.getElementsByTagName("body")[0].classList.add("modalOpen");
+			document.getElementById(target).classList.add("open");
 		})
 	}	
 	
@@ -16,9 +16,9 @@ window.addEventListener("load", function(){
 	for(let i = 0; i < modalCloseArea.length; i++) {
 		modalCloseArea[i].addEventListener("click", function(e) {
 			if(e.target == this) {
-				this.classList.remove("open");
 				document.getElementsByTagName("body")[0].style.overflow = "auto";
 				document.getElementsByTagName("body")[0].classList.remove("modalOpen");
+				this.classList.remove("open");
 			} 
 		})
 	}
@@ -28,9 +28,9 @@ window.addEventListener("load", function(){
 	for(let i = 0; i < modalCloseBttns.length; i++) {
 		modalCloseBttns[i].addEventListener("click", function() {
 			var target = this.dataset.target;
-			document.getElementById(target).classList.remove("open");
 			document.getElementsByTagName("body")[0].style.overflow = "auto";
 			document.getElementsByTagName("body")[0].classList.remove("modalOpen");
+			document.getElementById(target).classList.remove("open");
 		})
 	}
 

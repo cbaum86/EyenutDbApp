@@ -4,6 +4,7 @@
 <head>
     <head lang="en" th:include="fragments/headMeta :: headMeta">
 </head>
+
 <body id="login">
 	<div id="loginWrapper">
 		<div id="logo">
@@ -19,8 +20,8 @@
 	        You have been logged out.
 	    </div>
 	    <form th:action="@{/login}" method="post">
-	        <input type="text" name="username" placeholder="Username"/>
-	        <input type="password" name="password" placeholder="Password"/>
+	        <input type="text" name="username" placeholder="Username" autocomplete="username"/>
+	        <input type="password" name="password" placeholder="Password" autocomplete="current-password"/>
 	        <input type="submit" value="Sign In" class="feature"/>
 	    </form>
 	</div>

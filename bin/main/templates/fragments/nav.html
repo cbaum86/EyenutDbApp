@@ -5,12 +5,12 @@
 			<img th:src="@{/img/logo.svg}" />
 		</div>
 		<nav id="nav">
-			<a href="#">Home</a>
+			<!-- <a href="#">Home</a>
 			<a href="#">Hubs</a>
-			<a href="#">Queries</a>
+			<a href="#">Queries</a> -->
 		</nav>
 		<form th:action="@{/logout}" method="post" id="logout">
-			<input type="submit" id="logoutBttn" value="Sign Out"/>
+			<button type="submit" id="logoutBttn" class="iconOnly" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
 		</form>
 	</div>
 </header>

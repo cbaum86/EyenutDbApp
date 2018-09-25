@@ -18,17 +18,19 @@ import com.harvardtechnology.EyenutDbApp.service.QueryService;
 @Controller
 public class HubController {
 	
+	String pageTitle = "Hubs :: EyeNut Database App";
+	
 	@Autowired HubService hubService;
 	@Autowired QueryService queryService;
 	
 	@RequestMapping("/hubs")
 	public String hubList(Model model) {
 		
+		model.addAttribute("pageTitle", pageTitle);
 		model.addAttribute("awsHubs", hubService.listByIsAWS(true));
 		model.addAttribute("starHubs", hubService.listByIsAWS(false));
 		
 		return "/hubs";
-		
 	}
 	
 	@RequestMapping(value = "/results", method=RequestMethod.POST, params="action=RunQuery")
