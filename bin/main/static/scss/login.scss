@@ -1,0 +1,74 @@
+@import "vars";
+
+/*
+ * LOGIN PAGE STYLES
+ */
+body#login {
+	grid-template-rows: 1fr;
+	justify-items: center;
+	align-items: center;
+}
+#loginWrapper {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 400px;
+    padding: 0 5vw;
+
+    * {
+        box-sizing: border-box;
+    }
+    #logo img {
+        height: auto;
+        width: 100%;
+        padding: 0;
+    }
+    #title {
+        text-align: center;
+        margin: 0px 0 64px 0;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 10px;
+    }
+    form {
+        margin-top: 16px;
+    }
+    input {
+        width: 100%;
+        padding: 1rem 2rem;
+        border: 1px solid $lightGrey;
+        border-radius: 2px;
+
+        &:focus {
+            outline: 0;
+            border-color: $primaryColor;
+        }
+
+        & + input {
+            margin-top: 8px;
+        }
+    }
+    input[type="submit"] {
+        margin-top: 32px;
+        background-color: #FFF;
+        border: 2px solid $primaryColor;
+        font-size: 1rem;
+        color: $primaryColor;
+
+        &:hover {
+            background-color: $primaryColor;
+            border-color: $primaryColor;
+            color: #FFF;
+        }
+    }
+}
+
+.error,
+.info {
+	text-align: center;
+}
+.error {
+	color: #960000;
+}
+.info {
+	color: $primaryColor;
+}
