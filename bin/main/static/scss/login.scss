@@ -67,8 +67,8 @@ body#login {
 	text-align: center;
 }
 .error {
-	color: #960000;
+	color: $errorColor;
 }
 .info {
-	color: $primaryColor;
+	color: $primaryColoryColor;
 }
