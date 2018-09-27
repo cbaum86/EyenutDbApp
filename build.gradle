@@ -18,8 +18,14 @@ apply plugin: 'io.spring.dependency-management'
 group = 'com.harvardtechnology'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+def projectName = 'EyenutDbApp'
+
+jar {
+	baseName = 'eyenut-db-app'
+}
 
 repositories {
+	mavenLocal()
 	mavenCentral()
 }
 
@@ -40,4 +46,12 @@ dependencies {
 	runtime('mysql:mysql-connector-java')
 	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+sourceSets {
+	main {
+		resources {
+			exclude 'static/scss/**'
+		}
+	}
 }

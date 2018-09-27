@@ -1,20 +1,26 @@
+$myFont:            'Varela Round', sans-serif;
+
+$primaryColor:      #BED136;
+$darkGrey:          #333;
+$midGrey:           #555;
+$lightGrey:         #CCC;
+
 /*
  * GENERAL STYLES
  */
 * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Varela Round', sans-serif;
+	font-family: $myFont;
 }
 body {
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 	
 	min-height: 100vh;
-	margin: 0;
 	background: linear-gradient(220deg, #FFF, #FCFCFC 50%, #FFF 50%);
 	font-size: 100%;
-	color: #555;
+	color: $midGrey;
 }
 
 h1 {
@@ -49,12 +55,12 @@ input[type="submit"] {
 	border: none;
 	border-radius: 3px;
 	font-weight: bold;
-	color: #555;
+	color: $midGrey;
 	transition: all 0.5s ease;
 }
 button:hover,
 input[type="submit"]:hover {
-	background-color: #BED136;
+	background-color: $primaryColor;
 }
 button:focus {
 	outline:0;
@@ -63,18 +69,19 @@ button:focus {
 button.feature {
 	width: auto;
 	background-color: #FFF;
-	border: 2px solid #BED136;
+	border: 2px solid $primaryColor;
 	font-size: 1rem;
-	color: #BED136;
-}
-button.feature.selected,
-button.feature:hover {
-	background-color: #BED136;
-	border-color: #BED136;
-	color: #FFF;
-}
-button.feature + button.feature {
-	margin-left: 16px;
+	color: $primaryColor;
+
+    &.feature.selected,
+    &.feature:hover {
+        background-color: $primaryColor;
+        color: #FFF;
+    }
+    
+    & + button.feature {
+        margin-left: 16px;
+    }
 }
 button i {
 	margin-right: 8px;
@@ -88,8 +95,8 @@ button.iconOnly i {
  * HEADER/NAV STYLES
  */
 header {
-	background-color: #333;
-	/* border-bottom: 6px solid #BED136; */
+    background-color: $darkGrey;
+	/* border-bottom: 6px solid $primaryColor; */
 }
 #header {
 	display: grid;
@@ -98,17 +105,17 @@ header {
 	justify-items: center;
 	align-items: center;
 	height: auto;
-	/* width: 960px */
 	margin: 0 5vw;
 }
 
 #logo {
 	grid-area: logo;
 	justify-self: start;
-}
-#logo img {
-	height: 3rem;
-	padding: 16px 0;
+   
+    img {
+	    height: 3rem;
+	    padding: 16px 0;
+    }
 }
 #nav {
 	grid-area: nav;
@@ -118,19 +125,21 @@ header {
 	grid-auto-flow: column;
 	grid-auto-columns: auto;
 	justify-items: center;
-	align-items: center;
-}
-#nav a {
-	display: flex;
-	align-items: center;
-	height: 100%;
-	padding: 0 32px;
-	text-decoration: none;
-	color: white;
-	transition: color 0.5s ease;
-}
-#nav a:hover {
-	color: #BED136;
+    align-items: center;
+    
+    a {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0 32px;
+        text-decoration: none;
+        color: #FFF;
+        transition: color 0.5s ease;
+
+        &:hover {
+            color: $primaryColor;
+        }
+    }
 }
 #logout {
 	grid-area: logout;
@@ -141,10 +150,11 @@ header {
 	background-color: transparent;
 	font-size: 2rem;
 	font-weight: bold;
-	color: #CCC;
-}
-#logoutBttn:hover {
-	color: #BED136;
+    color: $lightGrey;
+    
+    &:hover {
+        color: $primaryColor;
+    }
 }
 
 
@@ -154,8 +164,8 @@ header {
 footer {
 	padding: 16px 0;
 	text-align: center;
-	background-color: #333;
-	color: #CCC;
+	background-color: $darkGrey;
+	color: $lightGrey;
 }
 
 
@@ -169,17 +179,18 @@ footer {
 	width: auto;
 	margin-bottom: 16px;
 	color: #FFF;
-}
-#hubSelectTitle::before {
-	z-index: -1;
-	content: '';
-	position: absolute;
-	top: -32px;
-	left: -5vw;
-	height: 350%;
-	width: 250%;
-	background-color: #BED136;
-	clip-path: polygon(0% 0%, 90% 0%, 100% 20%, 0% 100%);
+
+    &::before {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        top: -32px;
+        left: -5vw;
+        height: 350%;
+        width: 250%;
+        background-color: $primaryColor;
+        clip-path: polygon(0% 0%, 90% 0%, 100% 20%, 0% 100%);
+    }
 }
 #hubsWrapper {
 	display: grid;
@@ -201,21 +212,23 @@ button.selectAllHubs {
 }
 .selectHub {
 	padding: 16px;
-	border: 1px solid #DDD;
+	border: 1px solid $lightGrey;
 	background-color: #FFF;
-}
-.selectHub:hover {
-	background-color: #FFF;
-	border-color: #BED136;
-}
-.selectHub:active {
-	background-color: #727D20;
-}
-.selectHub.selected {
-	background-color: #BED136;
-}
-.selectHub.selected:active {
-	background-color: #AAA;
+    
+    &:hover {
+	    background-color: #FFF;
+	    border-color: $primaryColor;
+    }
+    &:active {
+        background-color: #727D20;
+    }
+    &.selected {
+        background-color: $primaryColor;
+    
+        &.selected:active {
+            background-color: #AAA;
+        }
+    }
 }
 
 
@@ -229,17 +242,18 @@ button.selectAllHubs {
 	width: auto;
 	margin-bottom: 16px;
 	color: #FFF;
-}
-#queryTitle::before {
-	z-index: -1;
-	content: '';
-	position: absolute;
-	top: -150%;
-	right: -5vw;
-	height: 500%;
-	width: 250%;
-	background-color: #555;
-	clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
+    
+    &::before {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        top: -150%;
+        right: -5vw;
+        height: 500%;
+        width: 250%;
+        background-color: $midGrey;
+        clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
+    }
 }
 #queryWrapper {
 	box-sizing: border-box;
@@ -250,10 +264,10 @@ button.selectAllHubs {
 	min-height: 100px;
 	width: 100%;
 	padding: 16px 32px;
-	border: 1px solid #CCC;
+	border: 1px solid $lightGrey;
 	border-radius: 2px;
 	font-family: Courier New, monospace;
-	color: #555;
+	color: $midGrey;
 	resize: vertical;
 }
 .queryToolbar {
@@ -292,13 +306,14 @@ body.modalOpen #main, body.modalOpen nav, body.modalOpen footer {
 	justify-content: center;
 	align-items: center;
 	
-	transition: height 0s 0.3s ease, top 0s 0.3s ease, opacity 0.3s ease;
-}
-.modal.open {
-	opacity: 1;
-	top: 0px;
-	height: 100vh;
-	transition: height 0s ease, top 0s ease, opacity 0.3s ease;
+    transition: height 0s 0.3s ease, top 0s 0.3s ease, opacity 0.3s ease;
+    
+    &.open {
+        opacity: 1;
+        top: 0px;
+        height: 100vh;
+        transition: height 0s ease, top 0s ease, opacity 0.3s ease;
+    }
 }
 .modalContainer {
 	background-color: #FFF;
@@ -312,19 +327,15 @@ body.modalOpen #main, body.modalOpen nav, body.modalOpen footer {
 .modalHeader {
 	border-radius: 3px 3px 0 0;
 	background-color: #EEE;
-}
-.modalHeader .modalClose {
-	float: right;
-	cursor: pointer;
-	color: #999;
-	transition: color 0.5s ease;
-}
-.modalHeader .modalClose:hover {
-	color: #555;	
-}
-.modalBody {
-	
-}
-.modalFooter {
-	
+    
+    .modalClose {
+        float: right;
+        cursor: pointer;
+        color: #999;
+        transition: color 0.5s ease;
+
+        &:hover {
+            color: $midGrey;
+        }
+    }
 }
